@@ -1,5 +1,5 @@
 """
-Name: (put your name here)
+Name: Aline Valenzuela-Lucero
 Peers: (add any collaborators)
 References: (anything you checked to solve this)
 """
@@ -7,7 +7,18 @@ References: (anything you checked to solve this)
 def get_letter():
     """ Add your own Docstring """
     # remove the default return and add your code
-    return ""
+    while True:
+        lett = input("Give an single uppercase letter: ") #asks user for a letter
+        if len(lett) > 1 and len(lett) == 0:
+            print("Error: it needs to be a single character.")
+            continue #if it is not 1 letter long, it will ask the user again
+        elif "A" not in lett and "B" not in lett and "C" not in lett:
+            print("Error: You provided the wrong character.")
+            continue #if the letter aint A,B,C, then it will restart
+        else:
+            return lett #if A,B,C then the letter will be returned
+        break
+        
 
 def get_digit():
     """ Add your own Docstring """
@@ -42,7 +53,7 @@ def main ():
     # ADD YOUR CODE UNDER THIS LINE
     # -------------------------------------------------
 
-    # Your code Here
+    letter = get_letter()
 
     # -------------------------------------------------
     # No need to modify anything Below this line
