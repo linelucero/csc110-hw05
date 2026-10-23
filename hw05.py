@@ -5,13 +5,17 @@ References: (anything you checked to solve this)
 """
 
 def get_letter():
-    """ Add your own Docstring """
+    """ This fucntions purpose is to use a while true loop which asks
+        the user for a single letter. A series of conditionals then
+        reject if the character is more than one and if it is not A
+        B or C. After, if all conditionals are obeyed, the input will
+        be returned."""
     # remove the default return and add your code
     while True:
         lett = input("Give an single uppercase letter: ") #asks user for a letter
         if len(lett) > 1 or len(lett) == 0:
             print("Error: it needs to be a single character.")
-            lett = input("Give an single uppercase letter: ")#if it is not 1 letter long, it will ask the user again
+            continue
         elif "A" not in lett and "B" not in lett and "C" not in lett:
             print("Error: You provided the wrong character.")
             #if the letter aint A,B,C, then it will restart
@@ -23,20 +27,28 @@ def get_digit():
     """ Add your own Docstring """
     # remove the default return and add your code
     while True:
-        digi = input("Give an single number character: ")
-        if len(digi) > 1 or len(digi) == 0 or not digi.isdigit():
+        digit = str(input("Give an single number character: "))
+        if not digit.isdigit():
             print("Error: your input should be only digits.")
             continue
-        elif "1" not in digi and "2" not in digi and "3" not in digi:
+        elif len(digit) > 1 or len(digit) == 0:
+            print("Error: a single digit needs to be in [1,3].")
+        elif "1" not in digit and "2" not in digit and "3" not in digit:
             print("Error: a single digit needs to be in [1,3].")
         else:
-            return digi
+            return digit
 
 
-def check_pattern(letter, digit, lst):
+def check_pattern(letter, digit, st_list):
     """ Add your own Docstring """
     # remove the default pass and add your code
-    pass
+    print("Strings with the pattern:")
+    
+    for word in st_list:
+        if letter in word and digit in word:
+            if word.index(letter) < word.index(digit):
+                print(word,end= " ")
+    print()
 
 
 #  The function main is INCOMPLETE, you must finish it
@@ -59,9 +71,19 @@ def main ():
     #          IF the user replies with anything else, the loop ends
     # ADD YOUR CODE UNDER THIS LINE
     # -------------------------------------------------
-
-    letter = get_letter()
-    digi = get_digit()
+    
+    while True:
+        letter = get_letter()
+        digit = get_digit()
+    
+        ls = check_pattern(letter, digit, st_list)
+    
+        ta = input("Try Again? (y/n): ")
+        if ta == "y":
+            continue
+        elif ta == "n":
+            break
+    
 
     # -------------------------------------------------
     # No need to modify anything Below this line
