@@ -9,21 +9,28 @@ def get_letter():
     # remove the default return and add your code
     while True:
         lett = input("Give an single uppercase letter: ") #asks user for a letter
-        if len(lett) > 1 and len(lett) == 0:
+        if len(lett) > 1 or len(lett) == 0:
             print("Error: it needs to be a single character.")
-            continue #if it is not 1 letter long, it will ask the user again
+            lett = input("Give an single uppercase letter: ")#if it is not 1 letter long, it will ask the user again
         elif "A" not in lett and "B" not in lett and "C" not in lett:
             print("Error: You provided the wrong character.")
-            continue #if the letter aint A,B,C, then it will restart
+            #if the letter aint A,B,C, then it will restart
         else:
             return lett #if A,B,C then the letter will be returned
-        break
         
 
 def get_digit():
     """ Add your own Docstring """
     # remove the default return and add your code
-    return 0
+    while True:
+        digi = input("Give an single number character: ")
+        if len(digi) > 1 or len(digi) == 0 or not digi.isdigit():
+            print("Error: your input should be only digits.")
+            continue
+        elif "1" not in digi and "2" not in digi and "3" not in digi:
+            print("Error: a single digit needs to be in [1,3].")
+        else:
+            return digi
 
 
 def check_pattern(letter, digit, lst):
@@ -54,6 +61,7 @@ def main ():
     # -------------------------------------------------
 
     letter = get_letter()
+    digi = get_digit()
 
     # -------------------------------------------------
     # No need to modify anything Below this line
