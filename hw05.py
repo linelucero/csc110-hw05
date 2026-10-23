@@ -10,11 +10,11 @@ def get_letter():
         reject if the character is more than one and if it is not A
         B or C. After, if all conditionals are obeyed, the input will
         be returned."""
-    # remove the default return and add your code
+    
     while True:
         lett = input("Give an single uppercase letter: ") #asks user for a letter
         if len(lett) > 1 or len(lett) == 0:
-            print("Error: it needs to be a single character.")
+            print("Error: it needs to be a single character.") # sets length boundaries
             continue
         elif "A" not in lett and "B" not in lett and "C" not in lett:
             print("Error: You provided the wrong character.")
@@ -24,30 +24,33 @@ def get_letter():
         
 
 def get_digit():
-    """ Add your own Docstring """
-    # remove the default return and add your code
+    """ This function uses a while true loop which asks the user for
+        a single numberm making sure it is a digit. A series of conditionals
+        will reject the value if its not a digit or if its too long. It also has to be 1,2,3
+        in order for it to work. At the end, the input will be returned."""
+
     while True:
-        digit = str(input("Give an single number character: "))
-        if not digit.isdigit():
-            print("Error: your input should be only digits.")
+        digit = str(input("Give an single number character: ")) #asks for user digit input
+        if not digit.isdigit(): #reads id digit is not a digit
+            print("Error: your input should be only digits.") #rejects and asks for it again
             continue
-        elif len(digit) > 1 or len(digit) == 0:
-            print("Error: a single digit needs to be in [1,3].")
+        elif len(digit) > 1 or len(digit) == 0: #sets the conditions for input length
+            print("Error: a single digit needs to be in [1,3].") #if not 1 then it rejects
         elif "1" not in digit and "2" not in digit and "3" not in digit:
-            print("Error: a single digit needs to be in [1,3].")
+            print("Error: a single digit needs to be in [1,3].") #if it aint 1,2,3 then try again
         else:
-            return digit
+            return digit #returns if all conditions are met
 
 
 def check_pattern(letter, digit, st_list):
-    """ Add your own Docstring """
-    # remove the default pass and add your code
+    """ this function checks to see if the input from the user appears in a list of values where the letter does first then the digit for any combination. """
+
     print("Strings with the pattern:")
     
-    for word in st_list:
-        if letter in word and digit in word:
-            if word.index(letter) < word.index(digit):
-                print(word,end= " ")
+    for word in st_list: #searched for indexes in the list
+        if letter in word and digit in word: #narrows down the indexes for those that include both inputs
+            if word.index(letter) < word.index(digit): #if the index of the letter is smaller than that of the digit, in other words the letter comes first
+                print(word,end= " ") #then those values that meet the conditions will be printed on one line
     print()
 
 
@@ -73,12 +76,12 @@ def main ():
     # -------------------------------------------------
     
     while True:
-        letter = get_letter()
-        digit = get_digit()
+        letter = get_letter() #calls get letter
+        digit = get_digit()#calles the digit
     
-        ls = check_pattern(letter, digit, st_list)
+        ls = check_pattern(letter, digit, st_list) #inserts the parameters in said function
     
-        ta = input("Try Again? (y/n): ")
+        ta = input("Try Again? (y/n): ") #after all functions are cycled trhough, it will ask to try again y if yes and n if no from user.
         if ta == "y":
             continue
         elif ta == "n":
